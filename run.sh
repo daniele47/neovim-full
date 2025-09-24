@@ -11,13 +11,14 @@ UNSAFE_DIRS=(
     "$HOME/.var"
     "$HOME/.var/app"
 )
+
+# load dir path: first from parameter, if missing from local file
 [[ "$#" -gt 0 ]] && DIR_PATH="$(realpath "$1")"
 MOUNT_DIR_FILE="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.mount_dir"
-
-# if mount dir file is present and there is parameter, use local file
 [[ "$#" == 0 ]] && [[ -f "$MOUNT_DIR_FILE" ]] && DIR_PATH="$(realpath "$(cat "$MOUNT_DIR_FILE")")"
 
 # checks on string to mount
+[[ "$DIR_PATH" == '' ]] && echo "File '$MOUNT_DIR_FILE' is missing, and so is parameter from input!" && exit 1
 if [ ! -d "$DIR_PATH" ] || [ ! -w "$DIR_PATH" ] || [ ! -O "$DIR_PATH" ]; then
     echo "invalid directory: '$DIR_PATH'"
     exit 1
