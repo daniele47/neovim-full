@@ -12,6 +12,10 @@ UNSAFE_DIRS=(
     "$HOME/.var/app"
 )
 DIR_PATH="$(realpath "$1")"
+MOUNT_DIR_FILE="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.mount_dir"
+
+# if mount dir file is present and there is parameter, use local file
+[[ "$#" == 0 ]] && [[ -f "$MOUNT_DIR_FILE" ]] && DIR_PATH="$(realpath "$(cat "$MOUNT_DIR_FILE")")"
 
 # checks on string to mount
 if [ ! -d "$DIR_PATH" ] || [ ! -w "$DIR_PATH" ] || [ ! -O "$DIR_PATH" ]; then
@@ -22,6 +26,7 @@ for UNSAFE_DIR in "${UNSAFE_DIRS[@]}"; do
     [[ "$DIR_PATH" == "$UNSAFE_DIR" ]] && echo "'$UNSAFE_DIR' is an unsafe directory to mount!" && exit 1
 done
 
+# launch container
 podman run -it --rm \
     --init \
     -e "TZ=$(timedatectl show --property=Timezone --value)" \
