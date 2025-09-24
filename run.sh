@@ -11,7 +11,7 @@ UNSAFE_DIRS=(
     "$HOME/.var"
     "$HOME/.var/app"
 )
-DIR_PATH="$(realpath "$1")"
+[[ "$#" -gt 0 ]] && DIR_PATH="$(realpath "$1")"
 MOUNT_DIR_FILE="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.mount_dir"
 
 # if mount dir file is present and there is parameter, use local file
