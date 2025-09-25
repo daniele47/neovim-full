@@ -1,5 +1,7 @@
 return {
 	lsps = {
+        -- c
+        "clangd",
         -- bash
 		"bash-language-server",
 		"shellcheck",
@@ -20,11 +22,6 @@ return {
 		sh = { "shfmt" },
 		json = { "jq" },
 		lua = { "stylua" },
-	},
-	linters_by_ft = {
-		bash = { "shellcheck" },
-		sh = { "shellcheck" },
-		json = { "jq" },
 	},
 	parsers = {
 		"bash",

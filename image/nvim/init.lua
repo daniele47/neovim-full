@@ -1,3 +1,4 @@
+local vim
 -- options
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -14,6 +15,9 @@ vim.opt.hlsearch = false
 vim.opt.mousemodel = "extend"
 vim.opt.pumheight = 15
 vim.opt.swapfile = false
+
+-- set colorscheme
+vim.cmd("colorscheme sorbet")
 
 -- use clipboard-osc52 to be able to copy from inside a container
 vim.g.clipboard = {
@@ -83,7 +87,7 @@ require("lazy").setup({
 				"spellfile",
 				"man",
 				"editorconfig",
-				"netrwPlugin",
+				-- "netrwPlugin",
 				"rplugin",
 				-- "matchit",
 				"matchparen",
