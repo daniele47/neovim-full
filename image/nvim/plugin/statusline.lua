@@ -13,7 +13,6 @@ function M.setup()
 		"%=",
 		"%<%{v:lua._G.Statusline.lspList()}",
 		"%<%{v:lua._G.Statusline.formatterList()}",
-		"%<%{v:lua._G.Statusline.linterList()}",
 		"%=",
 		"%{&ff}",
 		"%l:%v",
@@ -102,28 +101,14 @@ end
 
 function M.formatterList()
 	local formatters = vim.iter(require("utils.configs").formatters_by_ft[vim.bo.filetype] or {})
-		:filter(function(linter)
-			return vim.fn.executable(linter) == 1
+		:filter(function(fmt)
+			return vim.fn.executable(fmt) == 1
 		end)
 		:totable()
 	if #formatters > 0 then
 		local formatter_icon = " "
 		local formatter_names = vim.iter(formatters):join(", ")
 		return formatter_icon .. formatter_names
-	end
-	return ""
-end
-
-function M.linterList()
-	local linters = vim.iter(require("utils.configs").linters_by_ft[vim.bo.filetype] or {})
-		:filter(function(linter)
-			return vim.fn.executable(linter) == 1
-		end)
-		:totable()
-	if #linters > 0 then
-		local lint_icon = " "
-		local linter_names = vim.iter(linters):join(", ")
-		return lint_icon .. linter_names
 	end
 	return ""
 end
