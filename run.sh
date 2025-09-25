@@ -11,6 +11,7 @@ UNSAFE_DIRS=(
     "$HOME/.var"
     "$HOME/.var/app"
 )
+BASHINIT_FILE="$(dirname "$(realpath "${BASH_SOURCE[0]}")")/.bash_init"
 
 # load dir path: first from parameter, if missing from local file
 [[ "$#" -gt 0 ]] && DIR_PATH="$(realpath "$1")"
@@ -27,12 +28,16 @@ for UNSAFE_DIR in "${UNSAFE_DIRS[@]}"; do
     [[ "$DIR_PATH" == "$UNSAFE_DIR" ]] && echo "'$UNSAFE_DIR' is an unsafe directory to mount!" && exit 1
 done
 
+# all volumes to mount
+volumes=(-v "$DIR_PATH":/data)
+[[ -f "$BASHINIT_FILE" ]] && volumes+=(-v "$BASHINIT_FILE:/root/.bash_init")
+
 # launch container
 podman run -it --rm \
     --init \
     -e "TZ=$(timedatectl show --property=Timezone --value)" \
     --detach-keys="" \
     --security-opt label=type:container_runtime_t \
-    -v "$DIR_PATH":/data \
+    "${volumes[@]}" \
     -w /data \
     ghcr.io/daniele47/neovim bash
