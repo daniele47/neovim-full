@@ -14,6 +14,7 @@ vim.opt.hlsearch = false
 vim.opt.mousemodel = "extend"
 vim.opt.pumheight = 15
 vim.opt.swapfile = false
+vim.opt.termguicolors = true
 
 -- set colorscheme
 vim.cmd("colorscheme sorbet")
