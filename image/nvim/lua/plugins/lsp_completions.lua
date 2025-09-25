@@ -1,24 +1,7 @@
 return {
 	"saghen/blink.cmp",
 	event = "InsertEnter",
-	dependencies = {
-		{
-			"L3MON4D3/LuaSnip",
-			build = (function()
-				if vim.fn.has("win32") == 0 and vim.fn.executable("make") == 1 then
-					return "make install_jsregexp"
-				end
-			end)(),
-			dependencies = {
-				"rafamadriz/friendly-snippets",
-				config = function()
-					require("luasnip.loaders.from_vscode").lazy_load()
-				end,
-			},
-		},
-	},
 	opts = {
-		snippets = { preset = "luasnip" },
 		keymap = {
 			preset = "none",
 			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
