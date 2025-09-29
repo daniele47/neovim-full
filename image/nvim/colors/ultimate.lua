@@ -32,15 +32,15 @@ vim.cmd([[
     hi ModeMsg guifg=#dadada guibg=NONE ctermfg=253 ctermbg=NONE gui=bold cterm=bold
     hi MoreMsg guifg=#dadada guibg=NONE ctermfg=253 ctermbg=NONE gui=NONE cterm=NONE
     hi NonText guifg=#707070 guibg=NONE ctermfg=242 ctermbg=NONE gui=NONE cterm=NONE
-    hi Pmenu guifg=#cdd6f4 guibg=#1e1e2e ctermfg=189 ctermbg=235 gui=NONE cterm=NONE
-    hi PmenuMatch guifg=#cba6f7 guibg=#1e1e2e ctermfg=183 ctermbg=235 gui=NONE cterm=NONE
-    hi PmenuExtra guifg=#161821 guibg=#a6a8b1 ctermfg=233 ctermbg=248 gui=NONE cterm=NONE
-    hi PmenuKind guifg=#161821 guibg=#a6a8b1 ctermfg=233 ctermbg=248 gui=bold cterm=bold
+    hi Pmenu guifg=#cdd6f4 guibg=#11111b ctermfg=189 ctermbg=233 gui=NONE cterm=NONE
+    hi PmenuMatch guifg=#cba6f7 guibg=#11111b ctermfg=183 ctermbg=233 gui=bold cterm=bold
+    hi PmenuExtra guifg=#585870 guibg=#11111b ctermfg=60 ctermbg=233 gui=NONE cterm=NONE
+    hi PmenuKind guifg=#8787af guibg=#11111b ctermfg=103 ctermbg=233 gui=bold cterm=bold
     hi PmenuSbar guifg=#707070 guibg=#11111b ctermfg=242 ctermbg=233 gui=NONE cterm=NONE
-    hi PmenuSel guifg=#ffffff guibg=#313244 ctermfg=15 ctermbg=237 gui=NONE cterm=NONE
-    hi PmenuMatchSel guifg=#cba6f7 guibg=#313244 ctermfg=183 ctermbg=237 gui=bold cterm=bold
-    hi PmenuExtraSel guifg=#161821 guibg=#d7d7ff ctermfg=233 ctermbg=189 gui=NONE cterm=NONE
-    hi PmenuKindSel guifg=#161821 guibg=#d7d7ff ctermfg=233 ctermbg=189 gui=bold cterm=bold
+    hi PmenuSel guifg=#ffffff guibg=#45475a ctermfg=15 ctermbg=239 gui=NONE cterm=NONE
+    hi PmenuMatchSel guifg=#cba6f7 guibg=#45475a ctermfg=183 ctermbg=239 gui=bold cterm=bold
+    hi PmenuExtraSel guifg=#a8a8c0 guibg=#45475a ctermfg=146 ctermbg=239 gui=NONE cterm=NONE
+    hi PmenuKindSel guifg=#b7b7d7 guibg=#45475a ctermfg=146 ctermbg=239 gui=bold cterm=bold
     hi PmenuThumb guifg=#dadada guibg=#45475a ctermfg=253 ctermbg=239 gui=NONE cterm=NONE
     hi Question guifg=#dadada guibg=NONE ctermfg=253 ctermbg=NONE gui=NONE cterm=NONE
     hi QuickFixLine guifg=#ff5fff guibg=#000000 ctermfg=207 ctermbg=16 gui=reverse cterm=reverse
@@ -62,17 +62,18 @@ vim.cmd([[
     hi VisualNOS guifg=NONE guibg=#363841 ctermfg=NONE ctermbg=237 gui=NONE cterm=NONE
     hi WarningMsg guifg=#dadada guibg=NONE ctermfg=253 ctermbg=NONE gui=NONE cterm=NONE
     hi WildMenu guifg=#d7d7ff guibg=#161821 ctermfg=189 ctermbg=233 gui=bold cterm=bold
-    hi Comment guifg=#cba6f7 guibg=NONE ctermfg=183 ctermbg=NONE gui=italic cterm=NONE
+    hi Comment guifg=#8787af guibg=NONE ctermfg=103 ctermbg=NONE gui=italic cterm=NONE
     hi Constant guifg=#d75f5f guibg=NONE ctermfg=167 ctermbg=NONE gui=NONE cterm=NONE
     hi Error guifg=#ff5f5f guibg=#000000 ctermfg=203 ctermbg=16 gui=bold,reverse cterm=bold,reverse
     hi Identifier guifg=#87d75f guibg=NONE ctermfg=113 ctermbg=NONE gui=NONE cterm=NONE
+    hi Function guifg=#cf6fdf guibg=NONE ctermfg=170 ctermbg=NONE gui=NONE cterm=NONE
     hi Ignore guifg=#dadada guibg=NONE ctermfg=253 ctermbg=NONE gui=NONE cterm=NONE
     hi PreProc guifg=#87afd7 guibg=NONE ctermfg=110 ctermbg=NONE gui=NONE cterm=NONE
     hi Special guifg=#5fafaf guibg=NONE ctermfg=73 ctermbg=NONE gui=NONE cterm=NONE
-    hi Statement guifg=#87afd7 guibg=NONE ctermfg=110 ctermbg=NONE gui=NONE cterm=NONE
+    hi Statement guifg=#5fafaf guibg=NONE ctermfg=73 ctermbg=NONE gui=NONE cterm=NONE
     hi String guifg=#d7af5f guibg=NONE ctermfg=179 ctermbg=NONE gui=NONE cterm=NONE
     hi Todo guifg=#5fd7af guibg=NONE ctermfg=79 ctermbg=NONE gui=bold,reverse cterm=bold,reverse
-    hi Type guifg=#87afd7 guibg=NONE ctermfg=110 ctermbg=NONE gui=NONE cterm=NONE
+    hi Type guifg=#5f87af guibg=NONE ctermfg=67 ctermbg=NONE gui=NONE cterm=NONE
     hi Underlined guifg=#dadada guibg=NONE ctermfg=253 ctermbg=NONE gui=underline cterm=underline
     hi CursorIM guifg=#000000 guibg=#afff00 ctermfg=16 ctermbg=154 gui=NONE cterm=NONE
     hi ToolbarLine guifg=NONE guibg=#000000 ctermfg=NONE ctermbg=16 gui=NONE cterm=NONE
@@ -95,7 +96,6 @@ vim.cmd([[
     hi! link ErrorMsg Error
     hi! link Exception Statement
     hi! link Float Constant
-    hi! link Function Identifier
     hi! link Include PreProc
     hi! link Keyword Statement
     hi! link Label Statement
@@ -112,5 +112,12 @@ vim.cmd([[
     hi! link Typedef Type
     hi! link lCursor Cursor
     hi! link debugPC CursorLine
+
+    " diagnostic undercurl
+    hi DiagnosticUnderlineError gui=undercurl
+    hi DiagnosticUnderlineWarn gui=undercurl
+    hi DiagnosticUnderlineInfo gui=undercurl
+    hi DiagnosticUnderlineHint gui=undercurl
+    hi DiagnosticUnderlineOk gui=undercurl
 
 ]])
