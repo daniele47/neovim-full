@@ -17,12 +17,6 @@ return {
 		"typescript-language-server",
 		"jq",
 	},
-	formatters_by_ft = {
-		bash = { "shfmt" },
-		sh = { "shfmt" },
-		json = { "jq" },
-		lua = { "stylua" },
-	},
 	parsers = {
 		"bash",
 		"c",
