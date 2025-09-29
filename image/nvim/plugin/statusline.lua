@@ -41,10 +41,6 @@ function M.lspList()
 			:map(function(elem)
 				return elem.name
 			end)
-			:map(function(lsp)
-				local msg = tmp.message or ""
-				return lsp .. msg
-			end)
 			:join(", ")
 		return lsp_icon .. lsp_names
 	end
