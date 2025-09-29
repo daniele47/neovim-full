@@ -14,6 +14,7 @@ vim.opt.hlsearch = false
 vim.opt.mousemodel = "extend"
 vim.opt.pumheight = 15
 vim.opt.swapfile = false
+vim.cmd.colorscheme("ultimate")
 
 -- use clipboard-osc52 to be able to copy from inside a container
 vim.g.clipboard = {
