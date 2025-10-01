@@ -93,3 +93,32 @@ require("lazy").setup({
 		},
 	},
 })
+
+-- shaky support for builtin snippet engine (to remember how it's done!)
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(ev)
+        vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, { autotrigger = false })
+    end,
+})
+vim.keymap.set({"i", "s"}, "<C-l>", function()
+    if vim.fn.pumvisible() == 1 then
+        -- If completion menu is open, select next item
+        return "<C-n>"
+    else
+        -- Otherwise, jump to next snippet placeholder
+        return vim.snippet.jump(1)
+    end
+end, {expr = true})
+
+vim.keymap.set({"i", "s"}, "<C-h>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-p>"
+    else
+        return vim.snippet.jump(-1)
+    end
+end, {expr = true})
+vim.keymap.set({"i", "s"}, "<C-k>", function()
+    vim.snippet.stop()
+    return ""
+end, {expr = true})
+
