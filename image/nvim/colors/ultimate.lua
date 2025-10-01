@@ -11,28 +11,29 @@ end
 local col = {
     fg = {
         white = { gui = "#dadada", tui = 253 },
-        yellow = { gui = "#d7d75f", tui = 185 },
         orange = { gui = "#d7af5f", tui = 179 },
         lpink = { gui = "#d75fd7", tui = 170 },
         pink = { gui = "#ff00af", tui = 199 },
         red = { gui = "#d75f5f", tui = 167 },
         purple = { gui = "#af87d7", tui = 140 },
         lgreen = { gui = "#87d75f", tui = 113 },
-        green = { gui = "#5fa75f", tui = 71 },
+        green = { gui = "#5faf5f", tui = 71 },
         lblue = { gui = "#5fd7d7", tui = 80 },
         blue = { gui = "#5f87d7", tui = 68 },
         lgrey = { gui = "#8787af", tui = 103 },
         grey = { gui = "#5f5f87", tui = 60 },
-        black = { gui = "#1a1a1a", tui = 234 },
+        black = { gui = "#1c1c1c", tui = 234 },
     },
     bg = {
+        yellow = { gui = "#d7af5f", tui = 179 },
         pink = { gui = "#ff87ff", tui = 213 },
         red = { gui = "#ff5f5f", tui = 203 },
         green = { gui = "#00af5f", tui = 35 },
         lblue = { gui = "#87afff", tui = 111 },
-        grey = { gui = "#303030", tui = 236 },
         -- following ones have different colors in 24bit vs 256 palette
-        diff_blue = { gui = "#161821", tui = 233 }
+        diff_grey = { gui = "#4c4f69", tui = 239 },
+        diff_lblue = { gui = "#252842", tui = 235 },
+        diff_blue = { gui = "#161821", tui = 233 },
     },
 }
 
@@ -94,14 +95,14 @@ hi("Changed", col.fg.blue)
 hi("Removed", col.fg.red)
 
 -- :h highlight-groups
--- hi("ColorColumn")
+hi_link("ColorColumn", "Visual")
 hi("Conceal", col.fg.grey)
--- hi("CurSearch")
+hi("CurSearch", col.fg.black, col.bg.pink)
 hi("Cursor", col.fg.black, col.bg.white)
 hi_link("lCursor", "Cursor")
 hi_link("CursorIM", "Cursor")
--- hi("CursorColumn")
--- hi("CursorLine")
+hi_link("CursorColumn", "Visual")
+hi_link("CursorLine", "Visual")
 hi("Directory", col.fg.lblue)
 hi("DiffAdd", col.fg.black, col.bg.green)
 hi("DiffChange", col.fg.black, col.bg.lblue)
@@ -114,14 +115,14 @@ hi_link("WinSeparator", "Conceal")
 hi_link("Folded", "Conceal")
 hi_link("FoldColumn", "Conceal")
 hi_link("SignColumn", "Conceal")
--- hi("IncSearch")
--- hi("Substitute")
+hi_link("IncSearch", "Search")
+hi_link("Substitute", "Search")
 hi_link("LineNr", "Conceal")
 hi_link("LineNrAbove", "Conceal")
 hi_link("LineNrBelow", "Conceal")
-hi_link("CursorLineNr", "Normal")
-hi_link("CursorLineFold", "Normal")
-hi_link("CursorLineSign", "Normal")
+hi_link("CursorLineNr", "Conceal")
+hi_link("CursorLineFold", "Conceal")
+hi_link("CursorLineSign", "Conceal")
 hi("MatchParen", col.fg.pink, nil, { bold = true })
 hi_link("ModeMsg", "Normal")
 hi_link("MsgArea", "Normal")
@@ -129,46 +130,46 @@ hi_link("MsgSeparator", "Normal")
 hi_link("MoreMsg", "Normal")
 hi_link("NonText", "Conceal")
 hi("Normal", col.fg.white, col.bg.diff_blue)
--- hi("NormalFloat")
--- hi("FloatBorder")
--- hi("FloatTitle")
--- hi("FloatFooter")
+hi_link("NormalFloat", "Statusline")
+hi_link("FloatBorder", "Statusline")
+hi_link("FloatTitle", "Normal")
+hi_link("FloatFooter", "Normal")
 hi_link("NormalNC", "Normal")
--- hi("Pmenu")
--- hi("PmenuSel")
--- hi("PmenuKind")
--- hi("PmenuKindSel")
--- hi("PmenuExtra")
--- hi("PmenuExtraSel")
--- hi("PmenuSbar")
--- hi("PmenuThumb")
--- hi("PmenuMatch")
--- hi("PmenuMatchSel")
--- hi("ComplMatchIns")
+hi_link("Pmenu", "Statusline")
+hi_link("PmenuSel", "Visual")
+hi_link("PmenuKind", "Pmenu")
+hi_link("PmenuKindSel", "PmenuSel")
+hi_link("PmenuExtra", "Pmenu")
+hi_link("PmenuExtraSel", "PmenuSel")
+hi_link("PmenuSbar", "Pmenu")
+hi_link("PmenuThumb", "PmenuSel")
+hi("PmenuMatch", col.fg.white, nil, { bold = true })
+hi("PmenuMatchSel", col.fg.white, nil, { bold = true })
+hi_link("ComplMatchIns", "Normal")
 hi_link("Question", "Normal")
--- hi("QuickFixLine")
--- hi("Search")
--- hi("SnippetTabstop")
+hi("QuickFixLine", col.fg.lblue)
+hi("Search", col.fg.black, col.bg.yellow)
+hi_link("SnippetTabstop", "Visual")
 hi_link("SpecialKey", "Conceal")
 hi("SpellBad", col.fg.red, nil, { undercurl = true, cterm = { underline = true }})
 hi("SpellCap", col.fg.blue, nil, { undercurl = true, cterm = { underline = true }})
 hi("SpellLocal", col.fg.purple, nil, { undercurl = true, cterm = { underline = true }})
 hi("SpellRare", col.fg.lblue, nil, { undercurl = true, cterm = { underline = true }})
--- hi("StatusLine")
--- hi("StatusLineNC")
--- hi("StatusLineTerm")
--- hi("StatusLineTermNC")
--- hi("TabLine")
--- hi("TabLineFill")
--- hi("TabLineSel")
+hi("StatusLine", nil, col.bg.diff_lblue)
+hi_link("StatusLineNC", "Statusline")
+hi_link("StatusLineTerm", "Statusline")
+hi_link("StatusLineTermNC", "Statusline")
+hi_link("TabLine", "Statusline")
+hi_link("TabLineFill", "Statusline")
+hi_link("TabLineSel", "Normal")
 hi_link("Title", "Normal")
--- hi("Visual")
--- hi("VisualNOS")
--- hi("WarningMsg")
+hi("Visual", nil, col.bg.diff_grey)
+hi_link("VisualNOS", "Visual")
+hi("WarningMsg", col.fg.orange)
 hi_link("Whitespace", "Conceal")
--- hi("WildMenu")
--- hi("WinBar")
--- hi("WinBarNC")
+hi_link("WildMenu", "PmenuSel")
+hi_link("WinBar", "Statusline")
+hi_link("WinBarNC", "Statusline")
 
 -- :h diagnostic-highlights
 hi("DiagnosticError", col.fg.red)
